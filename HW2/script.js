@@ -9,16 +9,21 @@ const url2 =`https://striveschool-api.herokuapp.com/api/deezer/search?q=''`
 
 const searchArtist = ()=>{
  const searchName = searchField.value
- const urlName =`${url}q=${searchName}`   
+ const urlName =`${url}${searchName}`   
  /// qui crea il loding
  return  fetch(urlName)
  .then( data => data.json() )
  .then( data => { 
   console.log(data)
 // qui rimuovi
+searchResults.innerHTML = "" 
 
-  searchResults.innerHTML = "" 
-cradCard(data.data[0])
+for(let i = 0; i< data.data.length ; i++){
+
+cradCard(data.data[i])
+
+}
+
 })
 
 }
